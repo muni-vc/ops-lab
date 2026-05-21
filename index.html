@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Factory — Operations & Automation Systems · Muni Venkatacharan G</title>
+<meta name="description" content="A complete overview of tools, workflow systems, and AI solutions built for the Webidoo Content Factory by Muni Venkatacharan G, Operations Specialist.">
+<meta property="og:title" content="Content Factory — Operations & Automation Systems">
+<meta property="og:description" content="A complete overview of tools, workflow systems, and AI solutions built for the Webidoo Content Factory by Muni Venkatacharan G.">
+<meta property="og:image" content="https://muni-vc.github.io/cf-systems/og-image.png">
+<meta property="og:url" content="https://muni-vc.github.io/cf-systems">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Muni Venkatacharan G">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Content Factory — Operations & Automation Systems">
+<meta name="twitter:description" content="Tools, workflow systems, and AI solutions built for the Webidoo Content Factory.">
+<meta name="twitter:image" content="https://muni-vc.github.io/cf-systems/og-image.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+  :root {
+    --wine-deep:   #1e0a2e;
+    --wine:        #3b1a4a;
+    --wine-mid:    #5c2d7a;
+    --wine-light:  #9b6dbf;
+    --wine-pale:   #ead8f5;
+    --wine-faint:  #f6f0fc;
+    --cream:       #faf6ef;
+    --cream-mid:   #f2ebe0;
+    --cream-dark:  #e4d9c8;
+    --ink:         #1a0d26;
+    --muted:       #7a6880;
+    --rule:        #ddd0ed;
+    --white:       #ffffff;
+    --gold:        #b8892e;
+    --gold-pale:   #f7edd8;
+    --gold-mid:    #d4a84b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--wine-deep);
+    padding: 100px 5% 80px;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-orb-1 {
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(92,45,122,0.55) 0%, transparent 68%);
+    pointer-events: none;
+  }
+  .hero-orb-2 {
+    position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,137,46,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-line {
+    position: absolute; top: 0; left: clamp(40px, 8%, 120px);
+    width: 1px; height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.05) 70%, transparent);
+    pointer-events: none;
+  }
+
+  .hero-inner { position: relative; z-index: 2; max-width: 900px; }
+
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.4);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: 40px;
+    margin-bottom: 48px;
+  }
+
+  .hero-name {
+    font-size: 14px; font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px; letter-spacing: 0.07em;
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 800; line-height: 1.0;
+    color: var(--cream); margin-bottom: 32px;
+  }
+  .hero-title .gold { color: var(--gold-mid); }
+  .hero-title .ghost { color: rgba(250,246,239,0.2); }
+
+  .hero-desc {
+    font-size: clamp(15px, 2vw, 18px); font-weight: 300;
+    color: rgba(255,255,255,0.42);
+    max-width: 480px; line-height: 1.8; margin-bottom: 64px;
+  }
+
+  .hero-stats {
+    display: flex; gap: 48px; flex-wrap: wrap;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 36px;
+  }
+
+  .hero-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 800;
+    color: var(--wine-light); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    padding: 80px 5%;
+  }
+  .section.tinted { background: var(--wine-faint); }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--wine-light); margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 4vw, 40px); font-weight: 800;
+    color: var(--wine-deep); line-height: 1.1; margin-bottom: 12px;
+  }
+  .section-rule {
+    width: 36px; height: 3px;
+    background: var(--wine-mid); border-radius: 2px; margin-bottom: 14px;
+  }
+  .section-intro {
+    font-size: 16px; color: var(--muted);
+    max-width: 600px; line-height: 1.78; margin-bottom: 48px;
+  }
+
+  /* ── HERO QUOTE CARD ── */
+  .quote-card {
+    background: var(--wine-deep); border-radius: 16px;
+    padding: 40px 44px; margin-bottom: 32px;
+    position: relative; overflow: hidden;
+  }
+  .quote-card::after {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 220px; height: 220px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,137,46,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .quote-eyebrow {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold-mid); opacity: 0.75; margin-bottom: 16px;
+  }
+  .quote-text {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(17px, 2.5vw, 22px); font-weight: 700;
+    color: var(--cream); line-height: 1.45;
+    max-width: 560px; margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+  .quote-body {
+    font-size: 15px; color: rgba(250,246,239,0.46);
+    line-height: 1.8; position: relative; z-index: 1;
+    max-width: 640px;
+  }
+
+  /* ── STAT CARDS ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 24px 26px;
+    border-top: 3px solid var(--wine-mid);
+  }
+  .stat-big {
+    font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800;
+    color: var(--wine-mid); line-height: 1; margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--wine-light); margin-bottom: 6px;
+  }
+  .stat-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+  /* ── INFO CARDS ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px; margin-bottom: 20px;
+  }
+  .info-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 24px 26px;
+  }
+  .info-label {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--wine-light); margin-bottom: 8px;
+  }
+  .info-title {
+    font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700;
+    color: var(--wine-deep); margin-bottom: 9px;
+  }
+  .info-body { font-size: 14px; color: var(--muted); line-height: 1.72; }
+
+  /* ── APPROACH CARD ── */
+  .approach-card {
+    background: var(--gold-pale);
+    border: 1px solid rgba(184,137,46,0.2);
+    border-left: 4px solid var(--gold);
+    border-radius: 12px; padding: 20px 24px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .approach-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .approach-text { font-size: 14px; color: var(--ink); line-height: 1.76; }
+  .approach-text strong { color: var(--wine-deep); font-weight: 600; }
+
+  /* ── TOOLS GRID ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .tool-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 20px 22px;
+    border-left: 4px solid var(--wine-mid);
+    transition: box-shadow 0.2s;
+  }
+  .tool-card:hover { box-shadow: 0 4px 20px rgba(59,26,74,0.08); }
+  .tool-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .tool-emoji { font-size: 20px; flex-shrink: 0; }
+  .tool-name {
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--wine-deep); line-height: 1.2;
+  }
+  .tool-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .tool-tag {
+    display: inline-block; background: var(--wine-faint); color: var(--wine-mid);
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 20px; margin-top: 10px;
+  }
+
+  /* ── SYSTEM CARDS ── */
+  .system-list { display: flex; flex-direction: column; gap: 14px; }
+  .system-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 20px 24px;
+    border-left: 4px solid var(--wine-mid);
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px; align-items: start;
+    transition: box-shadow 0.2s;
+  }
+  .system-card:hover { box-shadow: 0 4px 20px rgba(59,26,74,0.08); }
+
+  @media (max-width: 640px) {
+    .system-card { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .sys-icon { font-size: 24px; margin-bottom: 6px; display: block; }
+  .sys-category {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--wine-light); margin-bottom: 3px;
+  }
+  .sys-name {
+    font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+    color: var(--wine-deep); line-height: 1.2; margin-bottom: 8px;
+  }
+  .status-pill {
+    display: inline-block; font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 20px;
+    background: #e8f5e9; color: #2e7d32;
+  }
+  .status-pill.testing { background: var(--gold-pale); color: #7a5500; }
+
+  .sys-right { font-size: 14px; color: var(--muted); line-height: 1.76; }
+  .sys-right strong { color: var(--ink); font-weight: 500; }
+
+  /* ── AI TOOLS ── */
+  .ai-block { margin-bottom: 36px; }
+  .ai-block-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule); margin-bottom: 16px;
+  }
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .ai-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 12px; padding: 18px 18px;
+    transition: box-shadow 0.2s;
+  }
+  .ai-card:hover { box-shadow: 0 4px 20px rgba(59,26,74,0.08); }
+  .ai-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .ai-name {
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--wine-deep); margin-bottom: 5px; line-height: 1.25;
+  }
+  .ai-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .ai-more {
+    background: var(--cream-mid); border: 1px solid var(--cream-dark);
+    border-radius: 12px; padding: 18px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+  }
+  .ai-more-title {
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+    color: var(--wine-light); margin-bottom: 4px;
+  }
+  .ai-more-sub { font-size: 12px; color: var(--muted); }
+
+  /* ── VISION CARDS ── */
+  .vision-card {
+    background: var(--wine-deep); border-radius: 16px;
+    padding: 32px 36px; margin-bottom: 16px;
+    position: relative; overflow: hidden;
+  }
+  .vision-card::before {
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 260px; height: 260px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(92,45,122,0.45) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .vision-title {
+    font-family: 'Syne', sans-serif; font-size: clamp(18px, 3vw, 24px); font-weight: 800;
+    color: var(--cream); margin-bottom: 12px; line-height: 1.2;
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .vision-title-icon { font-size: 22px; }
+  .vision-body {
+    font-size: 14px; color: rgba(250,246,239,0.5);
+    line-height: 1.82; margin-bottom: 20px;
+    position: relative; z-index: 1; max-width: 640px;
+  }
+  .vision-features {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px; position: relative; z-index: 1;
+  }
+  .vision-feature { display: flex; gap: 10px; align-items: flex-start; }
+  .vision-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold-mid); opacity: 0.5;
+    margin-top: 7px; flex-shrink: 0;
+  }
+  .vision-feature-text { font-size: 13px; color: rgba(250,246,239,0.45); line-height: 1.55; }
+
+  .pipeline-card {
+    background: var(--cream-mid); border: 1px solid var(--cream-dark);
+    border-left: 4px solid var(--gold);
+    border-radius: 12px; padding: 22px 26px;
+    margin-bottom: 16px;
+    display: flex; gap: 18px; align-items: flex-start;
+  }
+  .pipeline-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .pipeline-title {
+    font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700;
+    color: var(--wine-deep); margin-bottom: 7px;
+  }
+  .pipeline-body { font-size: 14px; color: var(--muted); line-height: 1.76; }
+  .pipeline-tag {
+    display: inline-block; background: var(--gold-pale); color: #7a5500;
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 20px; margin-top: 10px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(30,10,46,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+    color: rgba(255,255,255,0.6); letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: rgba(255,255,255,0.7); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { padding-top: 80px; }
+    .hero-stats { gap: 28px; }
+    .vision-card { padding: 24px 22px; }
+    .pipeline-card { flex-direction: column; gap: 10px; }
+    .quote-card { padding: 26px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MVC · Content Factory</div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#tools">Tools Hub</a></li>
+    <li><a href="#systems">Systems</a></li>
+    <li><a href="#ai">AI Tools</a></li>
+    <li><a href="#ahead">Road Ahead</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Webidoo · Content Factory</div>
+    <div class="hero-name">Muni Venkatacharan G &nbsp;·&nbsp; Operations Specialist</div>
+    <div class="hero-title">
+      Operations<br>
+      &amp;&nbsp;Automation<br>
+      <span class="gold">Systems</span><span class="ghost">.</span>
+    </div>
+    <div class="hero-desc">A complete overview of every tool, workflow system, and AI solution built for the Content Factory — and what is coming next.</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">9+</div>
+        <div class="hero-stat-label">Tools Hub</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">8+</div>
+        <div class="hero-stat-label">Standalone Systems</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">8+</div>
+        <div class="hero-stat-label">AI Tools</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" style="font-size:18px; letter-spacing:0.04em; margin-top:6px;">Feb 2026 – Present</div>
+        <div class="hero-stat-label">Webidoo S.p.A</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OVERVIEW ══ -->
+<section class="section" id="overview">
+  <div class="section-inner">
+    <div class="section-eyebrow">01 — Overview</div>
+    <div class="section-title">The Work at a Glance</div>
+    <div class="section-rule"></div>
+    <div class="section-intro">Alongside managing EMEA content operations, a growing suite of tools, systems, and AI workflows has been independently designed and built for the Content Factory — each one solving a real problem identified through daily work.</div>
+
+    <div class="quote-card">
+      <div class="quote-eyebrow">Approach</div>
+      <div class="quote-text">"Every workflow gap is an opportunity. I don't flag problems and move on — I identify them, design the fix, and build it."</div>
+      <div class="quote-body">Every tool and system here was self-initiated — no brief, no external instruction. Each one traces back to a specific pain point found through day-to-day operations: manual file naming across hundreds of assets, repetitive task creation every week, fragmented partner file exchanges, multi-step graph generation processes that could be collapsed into one. The principle behind all of it is the same — if something is being done manually and repeatedly, it should not be.</div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-big">9+</div>
+        <div class="stat-label">Tools Hub</div>
+        <div class="stat-desc">Automation tools inside a centralized portal, actively used by the Content Factory team.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big">8+</div>
+        <div class="stat-label">Standalone Systems</div>
+        <div class="stat-desc">Live dashboards, ClickUp automations, and operational portals running independently.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-big">8+</div>
+        <div class="stat-label">AI Tools</div>
+        <div class="stat-desc">Custom GPTs and Gemini Gems built for specific Content Factory workflows.</div>
+      </div>
+    </div>
+
+    <div class="info-grid" style="margin-bottom:20px;">
+      <div class="info-card">
+        <div class="info-label">What This Replaces</div>
+        <div class="info-title">Hours of Manual Work</div>
+        <div class="info-body">File renaming, folder creation, task setup, graph generation, report publishing, brief cleanup — all previously done by hand, every cycle. The time saved compounds across every project, every week, across every market.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">How It Was Built</div>
+        <div class="info-title">Learning by Doing</div>
+        <div class="info-body">No formal coding background — everything here was built through active learning, picking up new tools and approaches as needed, and working with AI and vibe coding to turn operational ideas into working systems.</div>
+      </div>
+    </div>
+
+    <div class="approach-card">
+      <div class="approach-icon">⚙️</div>
+      <div class="approach-text"><strong>Built entirely using free-tier tools.</strong> Every tool, dashboard, and AI workflow here runs without API charges or external subscriptions — built using Google Apps Script, Python, HTML, and the Gemini free API. Full operational value at zero running cost.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TOOLS HUB ══ -->
+<section class="section tinted" id="tools">
+  <div class="section-inner">
+    <div class="section-eyebrow">02 — Automation Layer</div>
+    <div class="section-title">The Content Factory Tools Hub</div>
+    <div class="section-rule"></div>
+    <div class="section-intro">A centralized Google Apps Script web app — one portal giving the team access to all automation tools, AI resources, playbooks, and documentation. Built, maintained, and expanded as new needs emerge.</div>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">🏷️</span><div class="tool-name">Taxonomy Bulk Drive File Renamer</div></div>
+        <div class="tool-desc">Enforces AEM-compliant file naming across large-scale Lenovo projects. Validates every attribute against the taxonomy before executing — preventing upload errors and ensuring naming consistency at scale. Updated to v0.51 with a full taxonomy refresh.</div>
+        <span class="tool-tag">File Management · AEM · Lenovo</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">📁</span><div class="tool-name">Universal Drive File Renamer</div></div>
+        <div class="tool-desc">General-purpose renamer handling complex folder hierarchies across any project. Applies standardized naming logic and reduces what used to be hours of manual work to minutes.</div>
+        <span class="tool-tag">File Management · All Markets</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">🔎</span><div class="tool-name">File Name Compliance Audit Tool</div></div>
+        <div class="tool-desc">Scans folder structures for Amazon naming compliance issues. Flags violations, provides correction recommendations, and keeps the user fully in control before any change is applied.</div>
+        <span class="tool-tag">Compliance · Amazon</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">🚀</span><div class="tool-name">Project Setup Automation</div></div>
+        <div class="tool-desc">Creates folder structures and project briefs simultaneously in a single run. Replaces what was previously a lengthy manual setup process with one automated action.</div>
+        <span class="tool-tag">Project Ops · All Markets</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">📂</span><div class="tool-name">Brief Folder Creator</div></div>
+        <div class="tool-desc">Generates standardized brief folder structures with all mandatory subdirectories in one click. Ensures full consistency across every project without any manual folder setup.</div>
+        <span class="tool-tag">Project Ops</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">⚡</span><div class="tool-name">Bulk Folder Creator</div></div>
+        <div class="tool-desc">High-volume folder creation with custom hierarchy support. Handles any scale — from a single project to 100+ folder structures — generated in seconds.</div>
+        <span class="tool-tag">Project Ops · High Volume</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">🎨</span><div class="tool-name">IDML Localization Engine</div></div>
+        <div class="tool-desc">Automates the integration of translated content directly into InDesign source files. Generates fully localized outputs alongside QA reports, cutting localization turnaround significantly.</div>
+        <span class="tool-tag">Localization · InDesign</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">📤</span><div class="tool-name">Content Extraction Toolkit</div></div>
+        <div class="tool-desc">Extracts structured text from PDFs and PowerPoint files into translation-ready Excel format. Preserves visual hierarchy and content order for seamless downstream localization workflows.</div>
+        <span class="tool-tag">Localization · Translation Prep</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header"><span class="tool-emoji">✉️</span><div class="tool-name">OFT Email Template Generator</div></div>
+        <div class="tool-desc">Creates reusable Outlook Form Templates with dynamic field configuration. Standardizes recurring email communication patterns across the organization while keeping templates flexible and easy to update.</div>
+        <span class="tool-tag">Communications · Templates</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SYSTEMS ══ -->
+<section class="section" id="systems">
+  <div class="section-inner">
+    <div class="section-eyebrow">03 — Systems & Dashboards</div>
+    <div class="section-title">Standalone Operational Systems</div>
+    <div class="section-rule"></div>
+    <div class="section-intro">Live dashboards, intelligent automations, and purpose-built portals that operate independently — each one designed around a specific operational challenge identified through daily work.</div>
+
+    <div class="system-list">
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">📊</span>
+          <div class="sys-category">Dashboard</div>
+          <div class="sys-name">Daily Report Dashboard</div>
+          <span class="status-pill">Live</span>
+        </div>
+        <div class="sys-right">Real-time operational dashboard deployed on Vercel, auto-synced with zero manual intervention. Provides <strong>live project pipeline visibility, multi-stage delivery tracking, and leadership-level status updates</strong> continuously. Replaced a fully manual daily reporting process.</div>
+      </div>
+
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">📈</span>
+          <div class="sys-category">Reporting Tool</div>
+          <div class="sys-name">Biweekly Report Graph Generator</div>
+          <span class="status-pill">Live</span>
+        </div>
+        <div class="sys-right">HTML-based tool that replaces a 4-step manual process. <strong>Before:</strong> pull data from ClickUp → process in PowerPoint → export as images → place in Figma. <strong>Now:</strong> paste the ClickUp data and receive perfectly formatted, Figma-ready graphs in one step.</div>
+      </div>
+
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">⚙️</span>
+          <div class="sys-category">ClickUp · 4 Automations</div>
+          <div class="sys-name">Workflow Automation Suite</div>
+          <span class="status-pill">Live</span>
+        </div>
+        <div class="sys-right">Four automations keeping tasks moving without manual follow-up. <strong>Review Routing</strong> assigns reviewers by market. <strong>Rework Handling</strong> extends deadlines intelligently. <strong>Source File Tracking</strong> creates upload tasks automatically. <strong>Issue Logging</strong> centralizes all problem tracking in one place.</div>
+      </div>
+
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">🛒</span>
+          <div class="sys-category">Amazon · Task Ops</div>
+          <div class="sys-name">Bulk Production Task Creator</div>
+          <span class="status-pill">Live</span>
+        </div>
+        <div class="sys-right">Built for the Amazon content manager who was manually creating tasks for multiple part numbers every week. Now she inputs structured spreadsheet data and the tool <strong>auto-generates parent tasks, language subtasks, maps all custom fields, and assigns team members</strong> based on workflow rules — in a single run.</div>
+      </div>
+
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">🔗</span>
+          <div class="sys-category">Amazon · Partner Ops</div>
+          <div class="sys-name">Partner File Exchange Portal</div>
+          <span class="status-pill">Live</span>
+        </div>
+        <div class="sys-right">A structured handoff portal built for the German translation exchange with Lionbridge. A request link is sent, and Lionbridge uploads translations directly against it — <strong>replacing fragmented email threads</strong> with one organized, traceable hub for every exchange.</div>
+      </div>
+
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">🗓️</span>
+          <div class="sys-category">Designer Ops</div>
+          <div class="sys-name">Designer Availability Checker</div>
+          <span class="status-pill">Live</span>
+        </div>
+        <div class="sys-right">Pulls live data from ClickUp API and Google Calendar to show <strong>exactly who is available, on leave, or outside working hours</strong> across all markets. Detects leave automatically, cross-references active task workload, and accounts for time zones across the global team.</div>
+      </div>
+
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">🖥️</span>
+          <div class="sys-category">Client Reporting</div>
+          <div class="sys-name">Lenovo Weekly Report Dashboard</div>
+          <span class="status-pill testing">In Testing</span>
+        </div>
+        <div class="sys-right">A client-facing portal where Lenovo can view project updates directly — replacing the manually prepared PowerPoint sent each week. Moves weekly reporting from a push model to a live, self-service view for the client.</div>
+      </div>
+
+      <div class="system-card">
+        <div class="sys-left">
+          <span class="sys-icon">📰</span>
+          <div class="sys-category">Communications</div>
+          <div class="sys-name">Newsletter Builder</div>
+          <span class="status-pill testing">In Testing</span>
+        </div>
+        <div class="sys-right">HTML template system for monthly newsletters with a fixed structure and branding. Input the month's content, receive a clean formatted newsletter <strong>ready to import directly into Gmail</strong> — with draft sharing and export functionality built in.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AI TOOLS ══ -->
+<section class="section tinted" id="ai">
+  <div class="section-inner">
+    <div class="section-eyebrow">04 — AI Layer</div>
+    <div class="section-title">Custom GPTs & Gemini Gems</div>
+    <div class="section-rule"></div>
+    <div class="section-intro">Purpose-built AI tools for Content Factory workflows — each one scoped and configured for a specific recurring task, built entirely on free-tier AI platforms.</div>
+
+    <div class="ai-block">
+      <div class="ai-block-label">Custom GPTs — ChatGPT</div>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <span class="ai-icon">🎨</span>
+          <div class="ai-name">IDML Localization GPT</div>
+          <div class="ai-desc">AI-assisted localization workflow for InDesign source files. Guides content mapping and translation integration with precision.</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-icon">📊</span>
+          <div class="ai-name">PPT Localization GPT</div>
+          <div class="ai-desc">Handles PowerPoint localization end-to-end. Processes translated content and maps it accurately back into presentation files.</div>
+        </div>
+        <div class="ai-more">
+          <div>
+            <div class="ai-more-title">More GPTs Active</div>
+            <div class="ai-more-sub">Additional GPTs in use and development</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-block">
+      <div class="ai-block-label">Gemini Gems</div>
+      <div class="ai-grid">
+        <div class="ai-card">
+          <span class="ai-icon">🖼️</span>
+          <div class="ai-name">Image Text Extractor</div>
+          <div class="ai-desc">Extracts and structures text from images — ready for localization prep and content processing workflows.</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-icon">🎬</span>
+          <div class="ai-name">Video Text Extractor</div>
+          <div class="ai-desc">Extracts on-screen text and content from video files. Built initially for the Lenovo Legion FIFA World Cup 26 campaign.</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-icon">📑</span>
+          <div class="ai-name">PDF & PPT Text Extractor</div>
+          <div class="ai-desc">Extracts structured text from PDF and PowerPoint files and prepares it for translation and localization workflows.</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-icon">🛒</span>
+          <div class="ai-name">Amazon Headline Localizer</div>
+          <div class="ai-desc">Translates and adapts Amazon product headlines across EMEA languages while maintaining brand tone and consistency.</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-icon">📝</span>
+          <div class="ai-name">CF Meeting Summary</div>
+          <div class="ai-desc">Generates clean, structured summaries after Content Factory meetings — decisions captured, action items clear, every time.</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-icon">🔍</span>
+          <div class="ai-name">Brief Analyzer</div>
+          <div class="ai-desc">Reviews incoming briefs for completeness and clarity — flagging gaps before they create problems further down the workflow.</div>
+        </div>
+        <div class="ai-card">
+          <span class="ai-icon">💡</span>
+          <div class="ai-name">Prompt Craft</div>
+          <div class="ai-desc">Helps team members build better AI prompts for their own workflows — raising output quality across the board.</div>
+        </div>
+        <div class="ai-more" style="grid-column: span 2;">
+          <div>
+            <div class="ai-more-title">More Gems Being Added</div>
+            <div class="ai-more-sub">Additional Gems in active use and development across the team</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="system-card" style="margin-top:8px;">
+      <div class="sys-left">
+        <span class="sys-icon">🌍</span>
+        <div class="sys-category">Knowledge Base</div>
+        <div class="sys-name">22-Language Translation Library</div>
+        <span class="status-pill testing">In Progress</span>
+      </div>
+      <div class="sys-right">A living translation and copywriting knowledge base built from past translation files, the copywriter handbook, and proofread feedback across all markets. Currently populating <strong>FR, IT, ES, SE, FI, NO, DK</strong>. Designed for consistent, high-quality output without manual instruction every time.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ROAD AHEAD ══ -->
+<section class="section" id="ahead">
+  <div class="section-inner">
+    <div class="section-eyebrow">05 — The Road Ahead</div>
+    <div class="section-title">What's Coming Next</div>
+    <div class="section-rule"></div>
+    <div class="section-intro">The work here is ongoing. As workflows evolve and new needs surface, so do the ideas — the next phase focuses on larger systems and deeper integration across the team.</div>
+
+    <div class="vision-card">
+      <div class="vision-title">
+        <span class="vision-title-icon">🏛️</span>
+        Content Factory Command Center
+      </div>
+      <div class="vision-body">The Tools Hub today is a tool repository. The vision is to evolve it into a full operational portal — a single destination where every team member can find everything they need to do their work well. Tools, documents, AI resources, playbooks, knowledge bases — all in one place, organized and immediately accessible.</div>
+      <div class="vision-features">
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">All automation tools in one central hub</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">All Gemini Gems and GPTs, linked and ready</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Documents, handbooks, Sloneek guides, SOPs</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Knowledge bases and translation libraries</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Links to all critical platforms and resources</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Zero friction — open it, find it, use it</div></div>
+      </div>
+    </div>
+
+    <div class="vision-card">
+      <div class="vision-title">
+        <span class="vision-title-icon">🎓</span>
+        Onboarding Kit Generator
+      </div>
+      <div class="vision-body">A personalized onboarding experience for every new joiner. They enter their name and role — CDM, Designer, or Copywriter — and receive a tailored onboarding kit built specifically for their function, their market, and their day-to-day workflow. Faster ramp-up, consistent experience, nothing generic.</div>
+      <div class="vision-features">
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Role-specific: CDM, Designer, Copywriter</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Personalized to the new joiner's details</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Everything relevant, nothing redundant</div></div>
+        <div class="vision-feature"><div class="vision-dot"></div><div class="vision-feature-text">Consistent first-day experience, every time</div></div>
+      </div>
+    </div>
+
+    <div class="pipeline-card">
+      <div class="pipeline-icon">🌐</div>
+      <div class="pipeline-right">
+        <div class="pipeline-title">HTML Email Localizer</div>
+        <div class="pipeline-body">Automates the full HTML email localization workflow. Feed in the English HTML file and a translation spreadsheet — the tool extracts the source text, maps the translations, rebuilds the localized HTML, and returns both the localized file and the corresponding OFT file, ready to use. Planned for development once AI API access is in place.</div>
+        <span class="pipeline-tag">In Pipeline · Requires API Integration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
